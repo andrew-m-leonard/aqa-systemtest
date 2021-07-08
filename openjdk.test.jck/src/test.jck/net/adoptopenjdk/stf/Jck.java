@@ -893,15 +893,16 @@ public class Jck implements StfPluginInterface {
 	}
 	
 	private boolean testsRequireDisplay (String tests) {
-		if (tests.equals("api") ||
-			tests.contains("api/java_applet") || tests.contains("api/java_io") ||
-			tests.contains("api/javax_swing") || tests.contains("api/javax_sound") ||
-			tests.contains("api/java_awt")  || tests.contains("api/javax_print") ||
-			tests.contains("api/java_beans") || tests.contains("api/javax_accessibility") ||
-			tests.contains("api/javax_naming")) {
-			return true;
-		}
-		return false;
+ return false;
+//		if (tests.equals("api") ||
+//			tests.contains("api/java_applet") || tests.contains("api/java_io") ||
+//			tests.contains("api/javax_swing") || tests.contains("api/javax_sound") ||
+//			tests.contains("api/java_awt")  || tests.contains("api/javax_print") ||
+//			tests.contains("api/java_beans") || tests.contains("api/javax_accessibility") ||
+//			tests.contains("api/javax_naming")) {
+//			return true;
+//		}
+//		return false;
 	}
 
 	private String determineJckRoot (StfCoreExtension test, String jckVersion) throws StfException {
