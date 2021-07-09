@@ -617,9 +617,9 @@ public class Jck implements StfPluginInterface {
 				keyword += "&!robot";
 			}
 
-			if ( tests.contains("api/signaturetest") ) {
-				fileContent += "set jck.env.testPlatform.xWindows \"No\"" + ";\n";
-			}
+			//if ( tests.contains("api/signaturetest") ) {
+			//	fileContent += "set jck.env.testPlatform.xWindows \"No\"" + ";\n";
+			//}
 
 			fileContent += "set jck.env.runtime.testExecute.cmdAsString \"" + pathToJava + "\"" + ";\n";
 			
