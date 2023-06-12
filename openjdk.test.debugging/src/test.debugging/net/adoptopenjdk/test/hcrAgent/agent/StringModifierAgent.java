@@ -35,7 +35,7 @@ public class StringModifierAgent {
 	 * @param inst The object that allows us access to the host JVM. We use it for retransformation.
 	 */
 	public static void agentmain(String args, Instrumentation inst) {
-		AgentLogger.setDebugLevel(1);
+		AgentLogger.setDebugLevel(2);
 		System.out.println("The agent's agentmain method was called.");
 		int percentage = 50;
 		int threadsLimit = 10;
@@ -62,7 +62,7 @@ public class StringModifierAgent {
 		// To parse the options passed to us.
 		for (String oneArg : argsArray) {
 			if (oneArg.startsWith("nodebug")) {
-				AgentLogger.setDebugLevel(0);
+				AgentLogger.setDebugLevel(2);
 				debugOption = "nodebug,";
 				AgentLogger.printThis("Option \"nodebug\" has disabled agent logging. The agent will produce no further output until it ends.",0);
 			}
@@ -115,8 +115,10 @@ public class StringModifierAgent {
 
 		AgentLogger.printThis("Entering the loop that will replace dead threads with live ones until we run out of time.",1);
 		int transformationCount = 0;
+AgentLogger.printThis("DURATION END = "+end);
 		while (end > System.currentTimeMillis()){
 			sleepNow(2 * 1000); //Wait for 2 seconds so we're not drowning out the attachee.
+AgentLogger.printThis("TIME = "+System.currentTimeMillis());
 			for (int i = 0;i < threadsLimit;++i) {
 				if (!threadArray[i].isAlive()){
 					threadArray[i] = new TransformerMakerThread(inst, i, percentage, randomNumberGenerator.nextLong());
