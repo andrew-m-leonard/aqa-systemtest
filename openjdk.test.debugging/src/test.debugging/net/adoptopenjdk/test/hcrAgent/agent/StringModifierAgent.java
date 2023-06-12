@@ -115,10 +115,10 @@ public class StringModifierAgent {
 
 		AgentLogger.printThis("Entering the loop that will replace dead threads with live ones until we run out of time.",1);
 		int transformationCount = 0;
-AgentLogger.printThis("DURATION END = "+end);
+AgentLogger.printThis("DURATION END = "+end,0);
 		while (end > System.currentTimeMillis()){
 			sleepNow(2 * 1000); //Wait for 2 seconds so we're not drowning out the attachee.
-AgentLogger.printThis("TIME = "+System.currentTimeMillis());
+AgentLogger.printThis("TIME = "+System.currentTimeMillis(),0);
 			for (int i = 0;i < threadsLimit;++i) {
 				if (!threadArray[i].isAlive()){
 					threadArray[i] = new TransformerMakerThread(inst, i, percentage, randomNumberGenerator.nextLong());
